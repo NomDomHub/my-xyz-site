@@ -1,58 +1,272 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Not Authorized</title>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nam AI (chatgpt v3.5)</title>
+
+    <meta property="og:title" content="Nam AI">
+<meta property="og:description" content="Trò chuyện với AI thông minh và nhanh chóng. Phát triển bởi Rainbows team softworks.">
+<meta property="og:image" content="https://i.postimg.cc/F73GXHLG/logo.png">
+<meta property="og:type" content="website">
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #789DE5;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-      body {
-        margin: 0;
-        font-family: 'Orbitron', sans-serif;
-        background: radial-gradient(circle, #111, #000);
-        color: #eee;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        text-align: center;
-      }
+        .sidebar {
+            width: 220px;
+            background: black;
+            color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 149, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-      .warning {
-        font-size: 48px;
-        color: red;
-        text-shadow: 0 0 10px red;
-        margin-bottom: 10px;
-      }
+        .sidebar h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
 
-      .desc {
-        font-size: 18px;
-        color: #aaa;
-        margin-bottom: 30px;
-      }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
 
-      a.discord-btn {
-        padding: 10px 20px;
-        border: 2px solid #444cff;
-        border-radius: 20px;
-        color: #444cff;
-        text-decoration: none;
-        font-weight: bold;
-        transition: 0.2s ease;
-      }
+        .sidebar ul li {
+            padding: 10px 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-      a.discord-btn:hover {
-        background: #444cff;
-        color: white;
-      }
+        .sidebar ul li:hover {
+            color: #789DE5;
+        }
+
+        .header {
+            background-color: #789DE5;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header img {
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #1a1a1d;
+            color: #789DE5;
+            overflow: hidden;
+        }
+
+        .messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .message.user p, .message.ai p {
+            background: #2c2c2e;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+            position: relative;
+        }
+
+        .message.user img, .message.ai img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .input-container {
+            display: flex;
+            border-top: 1px solid #333;
+            padding: 10px;
+            background: #0f0f0f;
+        }
+
+        .input-container input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 20px;
+            border: 1px solid #444;
+            background: #1f1f1f;
+            color: white;
+        }
+
+        .input-container button {
+            margin-left: 10px;
+            background: #789DE5;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .input-container button:hover {
+            background: #567bd1;
+        }
+
+        pre {
+            background: #333;
+            padding: 10px;
+            border-radius: 8px;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #789DE5;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
-  </head>
-  <body>
-    <div class="warning">🚫 Not Authorized</div>
-    <div class="desc">You are not authorized to view this file.</div>
-    <a class="discord-btn" href="https://discord.gg/your-invite" target="_blank">💬 Discord</a>
+</head>
 
-    <script src="check.js"></script>
-  </body>
+<body>
+    <div class="sidebar">
+        <div>
+            <h2>Menu</h2>
+            <ul>
+                <li>Trang chính</li>
+                <li>Lịch sử</li>
+                <li>Cài đặt</li>
+            </ul>
+        </div>
+        <div>
+            <small>Một số chức năng chưa hoàn thiện vì đây là bản thử nghiệm</small>
+        </div>
+        <div>
+            <small>&copy; Rainbows team softworks (Nam)</small>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="header">
+            <div style="display: flex; align-items: center;">
+                <img src="https://i.postimg.cc/F73GXHLG/logo.png" alt="Logo">
+                <h1>Nam AI (bản thử nghiệm)</h1>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div class="messages" id="chat"></div>
+            <div class="input-container">
+                <input type="text" id="userInput" placeholder="Nhập câu hỏi bạn cần giải!">
+                <button onclick="sendMessage()">Gửi</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_KEY = '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';
+
+        async function sendMessage() {
+            const input = document.getElementById('userInput');
+            const chat = document.getElementById('chat');
+            const userText = input.value.trim();
+            if (!userText) return;
+
+            chat.innerHTML += `<div class="message user"><img src="https://i.postimg.cc/jDTcxY6T/user.png"><p>${userText}</p></div>`;
+            input.value = '';
+            chat.scrollTop = chat.scrollHeight;
+
+            chat.innerHTML += `<div class="message ai" id="loading"><img src="https://i.postimg.cc/XXTxPCpp/bot.webp"><p>Đang trả lời...</p></div>`;
+            chat.scrollTop = chat.scrollHeight;
+
+            try {
+                const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${API_KEY}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        model: "openai/gpt-3.5-turbo",
+                        messages: [{ role: "user", content: userText }],
+                    })
+                });
+
+                const data = await response.json();
+                const aiReply = data?.choices?.[0]?.message?.content || "Xin lỗi, không có câu trả lời từ AI!";
+
+                document.getElementById('loading').remove();
+
+                const formattedReply = aiReply.replace(/```(.*?)```/gs, (match, code) => {
+                    return `<pre>${code}<button class='copy-btn' onclick='copyToClipboard(this, \`${code.replace(/`/g, "\\`")}\`)'>Copy</button></pre>`;
+                });
+
+                chat.innerHTML += `<div class="message ai"><img src="https://i.postimg.cc/XXTxPCpp/bot.webp"><p>${formattedReply}</p></div>`;
+                chat.scrollTop = chat.scrollHeight;
+
+            } catch (err) {
+                document.getElementById('loading').remove();
+                chat.innerHTML += `<div class="message ai"><img src="https://i.postimg.cc/XXTxPCpp/bot.webp"><p>Lỗi: ${err.message}</p></div>`;
+                chat.scrollTop = chat.scrollHeight;
+            }
+        }
+
+        function copyToClipboard(btn, code) {
+            navigator.clipboard.writeText(code);
+            btn.textContent = "Đã copy!";
+            setTimeout(() => btn.textContent = "Copy", 2000);
+        }
+
+        document.getElementById('userInput').addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+
 </html>
