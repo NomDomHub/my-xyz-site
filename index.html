@@ -1,9 +1,58 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Trang web XYZ</title>
-</head>
-<body>
-  <h1>Xin chào từ trang web .xyz trên Vercel!</h1>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Not Authorized</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+      body {
+        margin: 0;
+        font-family: 'Orbitron', sans-serif;
+        background: radial-gradient(circle, #111, #000);
+        color: #eee;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+      }
+
+      .warning {
+        font-size: 48px;
+        color: red;
+        text-shadow: 0 0 10px red;
+        margin-bottom: 10px;
+      }
+
+      .desc {
+        font-size: 18px;
+        color: #aaa;
+        margin-bottom: 30px;
+      }
+
+      a.discord-btn {
+        padding: 10px 20px;
+        border: 2px solid #444cff;
+        border-radius: 20px;
+        color: #444cff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.2s ease;
+      }
+
+      a.discord-btn:hover {
+        background: #444cff;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="warning">🚫 Not Authorized</div>
+    <div class="desc">You are not authorized to view this file.</div>
+    <a class="discord-btn" href="https://discord.gg/your-invite" target="_blank">💬 Discord</a>
+
+    <script src="check.js"></script>
+  </body>
 </html>
