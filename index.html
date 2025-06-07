@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ZynexHub - Script Page</title>
+    <title>Key System</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 </head>
@@ -11,31 +11,33 @@
 
     <div class="container">
         <div class="box">
-            <h2>ZynexHub Key System</h2>
-            <p>Get your key from here and use ZynexHub</p>
+            <h2>Lag Key System</h2>
+            <p>Get your key from here and use Lag CatHub</p>
         </div>
 
         <div class="box">
             <h3>Key:</h3>
-            <pre id="script1">Loading key...</pre>
-            <button class="copy-btn" data-clipboard-target="#script1">Copy</button>
+            <pre id="keyBox">Loading key...</pre>
+            <button class="copy-btn" data-clipboard-target="#keyBox">Copy</button>
         </div>
     </div>
 
+    <!-- ClipboardJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>
-        var clipboard = new ClipboardJS('.copy-btn');
-        clipboard.on('success', function(e) {
-            var button = e.trigger;
-            button.textContent = "Copied!";
-            button.style.backgroundColor = "blue";
-            setTimeout(function() {
-                button.textContent = "Copy";
-                button.style.backgroundColor = "";
+        const clipboard = new ClipboardJS('.copy-btn');
+        clipboard.on('success', e => {
+            const btn = e.trigger;
+            btn.textContent = "Copied!";
+            btn.style.backgroundColor = "blue";
+            setTimeout(() => {
+                btn.textContent = "Copy";
+                btn.style.backgroundColor = "";
             }, 1500);
         });
     </script>
 
+    <!-- Star background -->
     <script>
         const background = document.getElementById("background");
         for (let i = 0; i < 80; i++) {
@@ -47,20 +49,18 @@
             background.appendChild(star);
         }
     </script>
+
+    <!-- Load key -->
+    <script>
+        fetch("https://raw.githubusercontent.com/NomDomHub/my-xyz-site/refs/heads/main/Key")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("keyBox").textContent = data.trim();
+            })
+            .catch(err => {
+                document.getElementById("keyBox").textContent = "Error loading key!";
+                console.error("Failed to fetch key:", err);
+            });
+    </script>
 </body>
 </html>
-
-
-
-<script>
-    // Key'i çek ve göster
-    fetch("https://raw.githubusercontent.com/Hirokai-Script-make/Key/refs/heads/main/Key")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("script1").textContent = data.trim();
-        })
-        .catch(error => {
-            document.getElementById("script1").textContent = "Error loading key!";
-            console.error("Key fetch failed:", error);
-        });
-</script>
